@@ -79,10 +79,10 @@ export function AuthProvider({ children }) {
     return { success: false, error: "Missing information" };
   };
 
-  const loginWithGoogle = async () => {
+  const loginWithGoogle = async (callbackUrl = "/") => {
     // Delegate to NextAuth signIn for Google; this will redirect by default
     setLoading(true);
-    await signIn("google", { callbackUrl: "/" });
+    await signIn("google", { callbackUrl });
     return { success: true };
   };
 

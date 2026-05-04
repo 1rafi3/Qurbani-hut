@@ -1,13 +1,34 @@
-import Link from "next/link";
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 import Image from "next/image";
 
 export default function AnimalCard({ animal }) {
+  const router = useRouter();
+  const { user, loading } = useAuth();
+
   // Format price
   const formattedPrice = new Intl.NumberFormat("en-BD", {
     style: "currency",
     currency: "BDT",
     maximumFractionDigits: 0,
   }).format(animal.price);
+
+  const handleViewDetails = () => {
+    const detailsUrl = `/details-page?id=${animal.id}`;
+
+    if (loading) {
+      return;
+    }
+
+    if (user) {
+      router.push(detailsUrl);
+      return;
+    }
+
+    router.push(`/login?redirect=${encodeURIComponent(detailsUrl)}`);
+  };
 
   return (
     <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-amber-100 group flex flex-col h-full">
@@ -50,12 +71,13 @@ export default function AnimalCard({ animal }) {
           </div>
         </div>
         
-        <Link 
-          href={`/details-page?id=${animal.id}`}
+        <button
+          type="button"
+          onClick={handleViewDetails}
           className="w-full mt-auto block text-center bg-amber-100 hover:bg-amber-600 text-amber-900 hover:text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300"
         >
           View Details
-        </Link>
+        </button>
       </div>
     </div>
   );

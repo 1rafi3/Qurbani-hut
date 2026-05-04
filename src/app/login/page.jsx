@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 export default function Login() {
@@ -11,13 +11,19 @@ export default function Login() {
   const [error, setError] = useState("");
   const { login, loginWithGoogle } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const redirectTo = useMemo(() => {
+    const redirect = searchParams.get("redirect");
+    return redirect || "/my-profile";
+  }, [searchParams]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     const res = await login(email, password);
     if (res.success) {
-      router.push("/my-profile");
+      router.push(redirectTo);
     } else {
       setError(res.error);
     }
@@ -25,16 +31,16 @@ export default function Login() {
 
   const handleGoogleLogin = async () => {
     setError("");
-    const res = await loginWithGoogle();
+    const res = await loginWithGoogle(redirectTo);
     if (res.success) {
-      router.push("/my-profile");
+      router.push(redirectTo);
     }
   };
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full bg-white p-8 rounded-2xl shadow-xl border border-amber-100 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-amber-400 to-amber-600"></div>
+        <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-amber-400 to-amber-600"></div>
         
         <div className="text-center mb-8">
           <h2 className="text-3xl font-extrabold text-amber-950 mb-2">Welcome Back</h2>
