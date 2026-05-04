@@ -10,18 +10,16 @@ export function BookingProvider({ children }) {
   const { user } = useAuth();
 
   useEffect(() => {
-    if (user) {
-      // In a real app, this would fetch from a database.
-      // Here we load from localStorage specific to the user email
-      const storedBookings = localStorage.getItem(`bookings_${user.email}`);
-      if (storedBookings) {
-        setBookings(JSON.parse(storedBookings));
-      } else {
-        setBookings([]);
-      }
-    } else {
+    if (!user) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setBookings([]);
+      return;
     }
+
+    // In a real app, this would fetch from a database.
+    // Here we load from localStorage specific to the user email.
+    const storedBookings = localStorage.getItem(`bookings_${user.email}`);
+    setBookings(storedBookings ? JSON.parse(storedBookings) : []);
   }, [user]);
 
   const addBooking = (animal, bookingDetails) => {
@@ -39,9 +37,12 @@ export function BookingProvider({ children }) {
 
     const updatedBookings = [...bookings, newBooking];
     setBookings(updatedBookings);
-    
+
     // Save to localStorage
-    localStorage.setItem(`bookings_${user.email}`, JSON.stringify(updatedBookings));
+    localStorage.setItem(
+      `bookings_${user.email}`,
+      JSON.stringify(updatedBookings)
+    );
 
     return { success: true };
   };

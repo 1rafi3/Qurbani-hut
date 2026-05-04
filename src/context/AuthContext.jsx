@@ -8,10 +8,16 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const saveUser = (nextUser) => {
+    setUser(nextUser);
+    localStorage.setItem("qurbani_user", JSON.stringify(nextUser));
+  };
+
   useEffect(() => {
     // Check if user is logged in (mocking localStorage persistence)
     const storedUser = localStorage.getItem("qurbani_user");
     if (storedUser) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setUser(JSON.parse(storedUser));
     }
     setLoading(false);
@@ -21,15 +27,14 @@ export function AuthProvider({ children }) {
     setLoading(true);
     // Mock network request
     await new Promise((resolve) => setTimeout(resolve, 800));
-    
+
     if (email && password) {
       const mockUser = {
         name: "Test User",
-        email: email,
+        email,
         avatar: "https://i.pravatar.cc/150?u=" + email,
       };
-      setUser(mockUser);
-      localStorage.setItem("qurbani_user", JSON.stringify(mockUser));
+      saveUser(mockUser);
       setLoading(false);
       return { success: true };
     }
@@ -41,15 +46,14 @@ export function AuthProvider({ children }) {
     setLoading(true);
     // Mock network request
     await new Promise((resolve) => setTimeout(resolve, 800));
-    
+
     if (name && email && password) {
       const mockUser = {
-        name: name,
-        email: email,
+        name,
+        email,
         avatar: "https://i.pravatar.cc/150?u=" + email,
       };
-      setUser(mockUser);
-      localStorage.setItem("qurbani_user", JSON.stringify(mockUser));
+      saveUser(mockUser);
       setLoading(false);
       return { success: true };
     }
@@ -65,8 +69,7 @@ export function AuthProvider({ children }) {
       email: "google.user@example.com",
       avatar: "https://i.pravatar.cc/150?img=11",
     };
-    setUser(mockUser);
-    localStorage.setItem("qurbani_user", JSON.stringify(mockUser));
+    saveUser(mockUser);
     setLoading(false);
     return { success: true };
   };
