@@ -1,0 +1,80 @@
+[
+  {
+    "id": "1",
+    "name": "Premium Sahiwal Bull",
+    "type": "Cow",
+    "category": "Premium",
+    "price": 250000,
+    "weight": "450 kg",
+    "age": "2.5 years",
+    "location": "Savar Dairy Farm",
+    "image": "https://images.unsplash.com/photo-1545468800-85cc9bc6ecf7?auto=format&fit=crop&w=800&q=80",
+    "description": "একটি চমৎকার সাহিওয়াল জাতের বলদ, যা উচ্চ মাংস উৎপাদন এবং দারুণ স্বাস্থ্যের জন্য পরিচিত। সম্পূর্ণ টিকা দেওয়া এবং প্রাকৃতিকভাবে লালিত।",
+    "featured": true
+  },
+  {
+    "id": "2",
+    "name": "Deshi Red Bull",
+    "type": "Cow",
+    "category": "Standard",
+    "price": 120000,
+    "weight": "280 kg",
+    "age": "2 years",
+    "location": "Gazipur Cattle Point",
+    "image": "https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?auto=format&fit=crop&w=800&q=80",
+    "description": "একটি শক্তিশালী ও সক্রিয় দেশি বলদ। পারিবারিক কুরবানির জন্য উপযুক্ত। প্রাকৃতিক ঘাসে খোলা পরিবেশে লালিত।",
+    "featured": true
+  },
+  {
+    "id": "3",
+    "name": "Brahman Cross",
+    "type": "Cow",
+    "category": "Premium",
+    "price": 350000,
+    "weight": "600 kg",
+    "age": "3 years",
+    "location": "Gabtoli Haat",
+    "image": "https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?auto=format&fit=crop&w=800&q=80",
+    "description": "একটি বিশাল ব্রাহ্মণ ক্রসব্রিড গরু। উন্নত মানের মাংস এবং শান্ত স্বভাবের জন্য পরিচিত। সত্যিই একটি রাজকীয় প্রাণী।",
+    "featured": true
+  },
+  {
+    "id": "4",
+    "name": "Jamnapari Goat",
+    "type": "Goat",
+    "category": "Premium",
+    "price": 45000,
+    "weight": "45 kg",
+    "age": "1.5 years",
+    "location": "Keraniganj Farm",
+    "image": "https://images.unsplash.com/photo-1524024973431-2ad916746881?auto=format&fit=crop&w=800&q=80",
+    "description": "লম্বা কান এবং আকর্ষণীয় গঠনের একটি সুন্দর জামুনাপাড়ি ছাগল। ছোট কিন্তু প্রিমিয়াম কুরবানির জন্য আদর্শ।",
+    "featured": true
+  },
+  {
+    "id": "5",
+    "name": "Black Bengal Goat",
+    "type": "Goat",
+    "category": "Standard",
+    "price": 25000,
+    "weight": "22 kg",
+    "age": "1 year",
+    "location": "Mirpur Local",
+    "image": "https://i.ibb.co.com/LhZt64vX/zaynal-abedin-OIV9p2u-L4-H8-unsplash.jpg",
+    "description": "প্রসিদ্ধ ব্ল্যাক বেঙ্গল ছাগল, যা সবচেয়ে সুস্বাদু মাংসের জন্য পরিচিত। সম্পূর্ণ সুস্থ এবং প্রাণবন্ত।",
+    "featured": false
+  },
+  {
+    "id": "6",
+    "name": "Sindhi Bull",
+    "type": "Cow",
+    "category": "Premium",
+    "price": 180000,
+    "weight": "350 kg",
+    "age": "2.5 years",
+    "location": "Narayanganj Market",
+    "image": "https://i.ibb.co.com/SDbzNZWr/senior-farmer-shirtless-turban-loincloth-feeding-dry-grass-straw-touch-buffalo-with-love-smoke-backg.jpg",
+    "description": "স্বতন্ত্র লাল রঙের একটি চমৎকার সিন্ধি জাতের বলদ। যত্নসহকারে এবং উন্নত মানের খাদ্যে লালিত।",
+    "featured": false
+  }
+]
