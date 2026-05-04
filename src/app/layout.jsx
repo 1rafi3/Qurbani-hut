@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import { BookingProvider } from "@/context/BookingContext";
+import NextAuthProvider from "@/components/NextAuthProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -16,15 +17,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} min-h-screen flex flex-col bg-amber-50/30 text-slate-800`}>
-        <AuthProvider>
-          <BookingProvider>
-            <Navbar />
-            <main className="flex-grow">
-              {children}
-            </main>
-            <Footer />
-          </BookingProvider>
-        </AuthProvider>
+        <NextAuthProvider>
+          <AuthProvider>
+            <BookingProvider>
+              <Navbar />
+              <main className="flex-grow">
+                {children}
+              </main>
+              <Footer />
+            </BookingProvider>
+          </AuthProvider>
+        </NextAuthProvider>
       </body>
     </html>
   );
